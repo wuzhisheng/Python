@@ -1,0 +1,8 @@
+app01 放业务逻辑
+    models 放类：数据库对应的数据表
+    views 存放mysiteday_62.urls 对应的函数
+
+ mysiteday_62
+    urls 路径与函数的对应关系
+
+ templates 存放html静态文件

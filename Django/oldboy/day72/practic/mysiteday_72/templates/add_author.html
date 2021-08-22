@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}
+        <title>添加作者</title>
+{% endblock %}
+
+{% block content1 %}
+<div class="panel-heading">添加作者</div>
+{% endblock %}
+
+{% block content %}
+    <form class="form-horizontal" action="/add_author/" method="post">
+    {% csrf_token %}
+        <div class="form-group">
+            <label for="book_title" class="col-sm-2 control-label">作者姓名:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="book_title" name="author_name"
+                       placeholder="作者姓名:">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">作品：</label>
+            <div class="col-sm-10">
+                <select multiple name="books">
+                    {% for book in book_list %}
+                        <option value="{{ book.id }}">{{ book.title }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success">提交</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+

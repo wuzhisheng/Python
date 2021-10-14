@@ -1,5 +1,0 @@
-# select dept,avg(salary) from employee GROUP BY dept;
-# select * from employee2 inner join dept2 on (employee2.dept_id = dept2.id);
-# select AVG(salary) from employee2 GROUP BY dept_id;
-
-select dept2.name,avg(employee2.salary) from employee2 inner join dept2 on (employee2.dept_id = dept2.id) group by employee2.dept_id;

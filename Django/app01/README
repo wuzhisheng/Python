@@ -1,0 +1,33 @@
+
+
+
+
+======基础知识======
+#urls.py
+定义访问路径
+#views.py
+视图函数,负责业务逻辑，并在适当时候调用Model和Template。
+#Templates
+存放HTML文件的配置
+#settings.py
+1. 配置HTML文件存放的位置
+2. 配置静态文件存放的位置
+配置添加
+1. Templates(存放HTML文件的配置)  <-- 告诉Django去哪儿找我的HTML文件
+TEMPLATES = [
+        #告诉Django我用到的html文件你都去扎个目录找
+        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+]
+
+
+2. 静态文件(css/js/图片)
+# 静态文件保存目录的别名
+STATIC_URL = '/static/'
+
+# 所有静态文件(css/js/图片)都放在我下面你配置的文件夹中
+STATICFILES_DIRS = [
+	os.path.join(BASE_DIR, "static"),
+]
+
+3. 注释掉setting.py中 带有 csrf 的那一行(大概45~47行)
+

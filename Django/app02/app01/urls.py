@@ -16,14 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from .views import yimi,xiaohei,login
-
+#from .views import yimi,xiaohei,login,baobao
+from .views import yimi,xiaohei,login,baobao
 
 # 保存了路径和函数的对应关系
 urlpatterns = [
     path('yimi/', yimi),
     path('xiaohei/',xiaohei),
     path('login/',login),
-    # path('baobao/',baobao),
+    path('baobao/',baobao),
 ]
 

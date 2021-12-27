@@ -13,16 +13,17 @@ def xiaohei(request):
     #request参数保存了所有和用户浏览器请求相关的数据
     return render(request,"yimi.html")
 
+
+
 #方法一
 # def login(request):
 #     #如果你是GET请求
 #     return render(request,"login.html")
-#     #如果你是POST请求，我就取出提交的数据，做登录判断
+#
 # def baobao(request):
 #     #获取用户提交的数据
 #     # 取到所有POST的数据
-#     # print(request.POST)
-#     # return HttpResponse("WZS")
+#     # 获取post中的值email和pwd该字段是在html form中添加
 #     # print(request.POST)
 #     email = request.POST.get("email",None)
 #     pwd = request.POST.get("pwd", None)
@@ -42,15 +43,17 @@ def xiaohei(request):
 #         return render(request,"login.html")
 #     #如果你是POST请求，我就取出提交的数据，做登录判断
 #     else:
+#         #获取post中的账户和密码
+#         #email和pwd值是html定义的
 #         email = request.POST.get("email",None)
 #         pwd = request.POST.get("pwd", None)
-#         print(email,pwd)
+#         #print(email,pwd)
 #         #做是否登录成功的判断
 #         if email == "wzs@qq.com" and pwd == "123":
 #             return HttpResponse("登录成功!")
 #         else:
-#             # return HttpResponse("登录失败")
-#             return render(request,"login.html")
+#              return HttpResponse("登录失败")
+#             #return render(request,"login.html")
 
 #方法三 优化代码
 # def login(request):
@@ -77,7 +80,7 @@ def login(request):
         if email == "wzs@qq.com" and pwd == "123":
             #登录成功
             #回复一个特殊的响应，这个响应会让用户的浏览器请求指定的url
-            return redirect("https://www.luffycity.com")
+            return redirect("https://www.baidu.com")
         else:
             #登录失败
             error_msg = "邮箱或密码错误"

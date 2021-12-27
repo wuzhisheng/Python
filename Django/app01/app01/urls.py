@@ -15,11 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+#引用函数
 from .views import yimi,xiaohei,login
 
 
-# 保存了路径和函数的对应关系
+#1. 保存了路径和函数的对应关系
 urlpatterns = [
     path('yimi/', yimi),
     path('xiaohei/',xiaohei),

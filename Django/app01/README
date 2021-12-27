@@ -1,14 +1,18 @@
-
-
-
-
+	1. Django项目的启动:
+		1. 命令行启动
+			在项目的根目录下(也就是有manage.py的那个目录),运行:
+			python3 manage.py runserver IP:端口--> 在指定的IP和端口启动
+			python3 manage.py runserver 端口   --> 在指定的端口启动
+			python3 manage.py runserver        --> 默认在本机的8000端口启动
 ======基础知识======
 #urls.py
 定义访问路径
+
 #views.py
 视图函数,负责业务逻辑，并在适当时候调用Model和Template。
-#Templates
-存放HTML文件的配置
+#Templates存放HTML文件的配置
+
+##### 必须配置三大步骤 ######
 #settings.py
 1. 配置HTML文件存放的位置
 2. 配置静态文件存放的位置
@@ -18,7 +22,6 @@ TEMPLATES = [
         #告诉Django我用到的html文件你都去扎个目录找
         'DIRS': [os.path.join(BASE_DIR, 'templates')]
 ]
-
 
 2. 静态文件(css/js/图片)
 # 静态文件保存目录的别名

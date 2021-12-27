@@ -1,5 +1,7 @@
 
 from django.shortcuts import  HttpResponse,render
+
+#负责业务逻辑
 def yimi(request):
     return HttpResponse('hello yimi')
 

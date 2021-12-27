@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+#告诉Django有哪些APP
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'wzs01.apps.Wzs01Config',
+#    'wzs01' 或者以下 不能两个都写
+    'wzs01.apps.Wzs01Config', #推荐
 ]
 
 MIDDLEWARE = [

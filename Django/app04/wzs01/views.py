@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import HttpResponse,render,redirect
 
 # Create your views here.
+#专门来放函数
 
 from django.shortcuts import  HttpResponse,render,redirect
+from wzs01 import models
 
 #进程4
 def login(request):
@@ -22,3 +24,15 @@ def login(request):
             error_msg = "邮箱或密码错误"
     #不是post请求就走下面这一句
     return render(request,"login.html",{"error":error_msg})
+
+#展示所有的用户的函数
+def user_list(request):
+	#去数据库中查询所有的用户
+	#利用ORM这个工具去查询数据库，不用自己去查询
+    #去数据库中查询所有的用户
+    ret = models.UserInfo.objects.all()#【UserInfo object UserInfo object 】
+    # 显示<QuerySet [<UserInfo: UserInfo object (1)>, <UserInfo: UserInfo object (2)>]>
+    print (ret[0].id,ret[0].name) #打印列表字段
+   # return HttpResponse("别哭了！")
+    #打开user_list
+    return render(request,"user_list.html",{"user_list":ret}) #做ret字符串替换

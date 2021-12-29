@@ -1,60 +1,51 @@
-====================
-#Web框架本质及第一个Django实例
-www.cnblogs.com/liwenzhou/p/8258992.html
-=======================================
-## 标准的Django项目结构
+### ORM
+	ORM能做的事儿:
+		1. 操作数据表    --> 创建表/删除表/修改表
+			操作models.py里面的类
+		2. 操作数据行    --> 数据的增删改查
+		不能创建数据库,自己动手创建数据库
 
-#1. GET请求和POST请求
-		GET请求:
-			1. 浏览器请求一个页面
-			2. 搜索引擎检索关键字的时候
-		POST请求:
-			1. 浏览器向服务端提交数据,比如登录/注册等
+#操作
+在cmd上安装
+pip install pymysql
 
-#2.引入APP和具体操作
-	Django中的应用APP:
-		#在app03项目创建该wzs01应用?
-		project  --> 项目  (老男孩教育大学校)
-		APP      --> 应用  (Linux学院/Python学院/大数据学院/Java学院)
-		方便我们在一个大的Django项目中,管理实现不同的业务功能.
-		1. 创建APP的命令
-			1. 命令行,在Django项目的根目录输入:
-				python3 manage.py startapp app名字
-         python manage.py startapp wzs01
-            其中
-                view.py    存放函数的文件
-                apply.py   app相关的配置项
+1. 自己动手创建数据库
+	create database 数据库名;
+2. 在Django项目中设置连接数据库的相关配置(告诉Django连接哪一个数据库)
+	# 数据库相关的配置
+	DATABASES = {
+		'default': {
+			'ENGINE': 'django.db.backends.mysql',  # 连接的数据库类型
+			'HOST': '127.0.0.1',  # 连接数据库的地址
+			'PORT': 3306,  # 端口
+			'NAME': "day61",  # 数据库名称
+			'USER': 'root',  # 用户
+			'PASSWORD': '123456'  # 密码
+		}
+	}
+3. 告诉Django用pymysql代替默认的MySQLDB 连接MySQL数据库
+	在项目/__init__.py文件中,写下面两句:
+		import pymysql
+		# 告诉Django用pymysql来代替默认的MySQLdb
+		pymysql.install_as_MySQLdb()
+4. 在app下面的models.py文件中定义一个类,这个类必须继承models.Model
+from django.db import models
 
-         #告诉Django有哪些APP
-         INSTALLED_APPS = [
-         #    'wzs01' 或者以下 不能两个都写
-             'wzs01.apps.Wzs01Config', #推荐
-             ]
+# Create your models here.
+#ORM相关的只能写在这个里，写到别的文件里Django找不到
+class UserInfo(models.Model):
+    #创建一个自增的主键字段
+    id = models.AutoField(primary_key=True)
+    #创建一个carchar类型的不能为空的字段
+    name = models.CharField(null=False,max_length=20)
+5. 执行两个命令
+#将models.py里面的改动记录下来app01/migrations文件下面
+1. python3 manage.py makemigrations
+#把改动翻译成SQL语句去数据库执行
+2. python3 manage.py migrate
 
-##### 3.必须配置三大步骤 ######
-#settings.py
-1. 配置HTML文件存放的位置
-2. 配置静态文件存放的位置
-配置添加
-1. Templates(存放HTML文件的配置)  <-- 告诉Django去哪儿找我的HTML文件
-TEMPLATES = [
-        #告诉Django我用到的html文件你都去扎个目录找【默认就有】
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-]
-
-2. 静态文件(css/js/图片)
-# 静态文件保存目录的别名
-STATIC_URL = '/static/'
-
-# 所有静态文件(css/js/图片)都放在我下面你配置的文件夹中
-STATICFILES_DIRS = [
-	os.path.join(BASE_DIR, "static"),
-]
-
-3. 注释掉setting.py中 带有 csrf 的那一行(大概45~47行)
-
-===================================
-form表单往后端提交数据需要注意哪三点:
-	1. form不是from,所有获取用户输入的标签都应该放在form里面, 并且必须要有name属性
-	2. action属性控制往哪儿提交,method一般都设置成post
-	3. 提交按钮必须是type=submit,不能是别的类型
+## 显示database
+在pycharm-》Tools Buttons
+#打开数据库
+点击Database中 + 选中Data Source 再选MYSQL类型
+再填上数据库连接信息即可

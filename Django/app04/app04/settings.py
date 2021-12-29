@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'app03.urls'
+ROOT_URLCONF = 'app04.urls'
 
 TEMPLATES = [
     {
@@ -71,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'app03.wsgi.application'
+WSGI_APPLICATION = 'app04.wsgi.application'
 
 
 # Database
@@ -88,16 +88,12 @@ DATABASES = {
     'default': {
         #连接的数据库类型
         'ENGINE': 'django.db.backends.mysql',
-        #连接数据库的地址
-        'HOST': 'rm-wz9912u5wtv99006eco.mysql.rds.aliyuncs.com',
-        #端口
-        'POST': 3306,
-        #数据库名称
-        'NAME': "wzs_test",
-        #用户
-        'USER': 'wzs_test',
-        #密码
-        'PASSWORD': 'wzstest123@'
+
+        'HOST': 'rm-wz9912u5wtv99006eco.mysql.rds.aliyuncs.com',#连接数据库的地址
+        'POST': 3306, #端口
+        'NAME': "wzs_test", #数据库名称
+        'USER': 'wzs_test', #用户
+        'PASSWORD': 'wzstest123@' #密码
     }
 }
 

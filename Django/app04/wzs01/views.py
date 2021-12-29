@@ -36,3 +36,17 @@ def user_list(request):
    # return HttpResponse("别哭了！")
     #打开user_list
     return render(request,"user_list.html",{"user_list":ret}) #做ret字符串替换
+
+#添加用户
+def add_user(request):
+    if request.method == "POST":
+        #用户填写了新的用户名，并发送了POST请求过来
+        new_name = request.POST.get("username",None)
+        #去数据库中新创建一条用户记录
+        models.UserInfo.objects.create(name=new_name)
+        #return HttpResponse("添加成功")
+        #添加成功后直接跳转到用户列表页
+        #跳到自己网站 只需要添加相对路径
+        return  redirect("/user_list/")
+    #第一次请求页面的时候，就返回一个页面，页面上有两个框让用户填写
+    return render(request,"add_user.html")

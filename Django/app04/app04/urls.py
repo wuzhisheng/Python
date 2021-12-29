@@ -21,4 +21,5 @@ urlpatterns = [
     path('login/', views.login),
     #定义个路径和函数的对应关系
     path('user_list/', views.user_list),
+    path('add_user/', views.add_user),
 ]

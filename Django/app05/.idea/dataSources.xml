@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="wzs_publisher@rm-wz9912u5wtv99006eco.mysql.rds.aliyuncs.com" uuid="cdb830cc-a810-4cc9-85cf-f655ea8c49f2">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://rm-wz9912u5wtv99006eco.mysql.rds.aliyuncs.com:3306/wzs_publisher</jdbc-url>
+    </data-source>
+  </component>
+</project>

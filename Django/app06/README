@@ -1,0 +1,51 @@
+### ORM
+	ORM能做的事儿:
+		1. 操作数据表    --> 创建表/删除表/修改表
+			操作models.py里面的类
+		2. 操作数据行    --> 数据的增删改查
+		不能创建数据库,自己动手创建数据库
+
+#操作
+在cmd上安装
+pip install pymysql
+
+1. 自己动手创建数据库
+	create database 数据库名;
+2. 在Django项目中设置连接数据库的相关配置(告诉Django连接哪一个数据库)
+	# 数据库相关的配置
+	DATABASES = {
+		'default': {
+			'ENGINE': 'django.db.backends.mysql',  # 连接的数据库类型
+			'HOST': '127.0.0.1',  # 连接数据库的地址
+			'PORT': 3306,  # 端口
+			'NAME': "day61",  # 数据库名称
+			'USER': 'root',  # 用户
+			'PASSWORD': '123456'  # 密码
+		}
+	}
+3. 告诉Django用pymysql代替默认的MySQLDB 连接MySQL数据库
+	在项目/__init__.py文件中,写下面两句:
+		import pymysql
+		# 告诉Django用pymysql来代替默认的MySQLdb
+		pymysql.install_as_MySQLdb()
+4. 在app下面的models.py文件中定义一个类,这个类必须继承models.Model
+from django.db import models
+
+# Create your models here.
+#ORM相关的只能写在这个里，写到别的文件里Django找不到
+class UserInfo(models.Model):
+    #创建一个自增的主键字段
+    id = models.AutoField(primary_key=True)
+    #创建一个carchar类型的不能为空的字段
+    name = models.CharField(null=False,max_length=20)
+5. 执行两个命令
+#将models.py里面的改动记录下来app01/migrations文件下面
+1. python3 manage.py makemigrations
+#把改动翻译成SQL语句去数据库执行
+2. python3 manage.py migrate
+
+## 显示database
+在pycharm-》Tools Buttons
+#打开数据库
+点击Database中 + 选中Data Source 再选MYSQL类型
+再填上数据库连接信息即可

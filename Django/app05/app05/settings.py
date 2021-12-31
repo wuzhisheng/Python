@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'd1d7mjwy1!7klx-72p)0b2_c3in(m(iua4wdtjb4t%zwty8lmf'
+SECRET_KEY = 'o55yv(3*wm=28arvsk%84uwbv#40pp+&&*h^vmd^5($t)7(bv('
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'wzs01.apps.Wzs01Config',
-    'w',
+    'wzs_project.apps.WzsProjectConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -76,17 +76,26 @@ WSGI_APPLICATION = 'app05.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+#这个能通
 DATABASES = {
     'default': {
         #连接的数据库类型
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': 'rm-wz9912u5wtv99006eco.mysql.rds.aliyuncs.com',#连接数据库的地址
-        'POST': 3306, #端口
-        'NAME': "wzs_publisher", #数据库名称
-        'USER': 'wzs_test', #用户
-        'PASSWORD': 'wzstest123@' #密码
+        'HOST': 'rm-wz9912u5wtv99006eco.mysql.rds.aliyuncs.com',
+        'POST': 3306,
+        'NAME': "wzs_test",
+        'USER': 'wzs_test',
+        'PASSWORD': 'wzstest123@'
     }
 }
+
 
 
 # Password validation
@@ -125,8 +134,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+# 静态文件保存目录的别名
 STATIC_URL = '/static/'
-#所有静态文件(css/js/图片)都放在我下面你配置的文件夹中
-STATICFILES_DIRS=[
-    os.path.join(BASE_DIR,"static")
+
+# 所有静态文件(css/js/图片)都放在我下面你配置的文件夹中
+STATICFILES_DIRS = [
+   os.path.join(BASE_DIR, "static"),
 ]

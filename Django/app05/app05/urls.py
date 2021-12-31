@@ -15,7 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+#引入app应用
+from wzs_project import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('login/', views.login),
+    # path('user_list/',views.user_list),
+    path('publisher_list/',views.publisher_list),
+    path('add_publisher/',views.add_publisher),
 ]
